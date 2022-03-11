@@ -1,0 +1,46 @@
+.formulario{
+  flex-grow: 2;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 40px;
+  border-radius: 10px;
+}
+
+.formulario_input{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.formulario_input input{
+  border-radius: 4px;
+}
+
+.formulario_input, .formulario_textarea {
+  margin-top: 8px;
+  padding: 4px;
+  border: none;
+  background-color: var(--fundo-detalhes);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  border-radius: 10px;
+}
+
+.formulario_nome-tarefa{
+  margin: 0px 30px;
+}
+
+.formulario_button {
+  align-self: flex-end;
+  width: 30%;
+  background-color: var(--secundaria);
+  color: white;
+  font-weight: 400;
+}
+
+.formulario_button:hover {
+  background-color: var(--secundaria-ativa);
+}
