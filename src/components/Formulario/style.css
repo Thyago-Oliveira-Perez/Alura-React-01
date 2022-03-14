@@ -44,3 +44,26 @@
 .formulario_button:hover {
   background-color: var(--secundaria-ativa);
 }
+
+.formulario_input-select{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  margin-top: 8px;
+  padding: 4px;
+  border: none;
+  background-color: var(--fundo-detalhes);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  border-radius: 10px;
+}
+
+.formulario_input-select label{
+  margin: 8px 10px;
+}
+
+.formulario_input-select select{
+  margin: 0 10px 0 0;
+  width: 100%;
+}

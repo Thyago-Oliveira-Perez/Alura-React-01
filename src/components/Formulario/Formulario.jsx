@@ -2,11 +2,24 @@ import { Component } from "react";
 import "./style.css";
 
 class Formulario extends Component {
-
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.titulo = "";
     this.texto = "";
+    this.state = { categorias: [] };
+    this._novaCategoria = this._novasCategorias.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.categorias.inscrever(this._novaCategoria);
+  }
+
+  componentWillUnmount(){
+    this.props.categorias.desinscrever(this._novaCategoria);
+  }
+
+  _novasCategorias(categorias) {
+    this.setState({ ...this.state, categorias });
   }
 
   /*
@@ -27,6 +40,11 @@ class Formulario extends Component {
     this.texto = evento.target.value;
   }
 
+  _handleMudancaCategoria(evento) {
+    evento.stopPropagation();
+    this.categoria = evento.target.value;
+  }
+
   /*
   aqui eu estou passando o valor de titulo e texto, antes pegos
   pelas outras funções handle, para o props.criarNota pelo
@@ -37,14 +55,25 @@ class Formulario extends Component {
   _criarNota(evento) {
     evento.preventDefault();
     evento.stopPropagation();
-    this.props.criarNota(this.titulo, this.texto);
+    this.props.criarNota(this.titulo, this.texto, this.categoria);
   }
 
   render() {
     return (
-      <form className="formulario" 
-        onSubmit={this._criarNota.bind(this)}
+      <form className="formulario" onSubmit={this._criarNota.bind(this)}>
+        <div
+          onChange={this._handleMudancaCategoria.bind(this)}
+          className="formulario_input-select"
         >
+          <label>Categorias</label>
+          <select>
+            <option>Sem Categoria</option>
+            {this.state.categorias.map((categoria, index) => {
+              return <option key={index}>{categoria}</option>;
+            })}
+          </select>
+        </div>
+
         <div className="formulario_input">
           <label className="formulario_nome-tarefa">Titulo da Tarefa</label>
           <input

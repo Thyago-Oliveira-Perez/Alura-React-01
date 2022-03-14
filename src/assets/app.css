@@ -4,6 +4,10 @@
     align-items: flex-start;
   }
   
+.conteudo-principal{
+  flex-grow: 3;
+}
+
   :root {
     --primaria: #58a4b0;
     --secundaria: #373f51;
